@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat with GPT</title>
+    <!-- Prism.js Okaidia 다크 테마 CSS 추가 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            background-color: #333333;
+            color: #ffffff;
+            border: 1px solid #555555;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        textarea {
+            height: 100px; /* 높이를 설정하여 100자 이상 볼 수 있도록 */
+            resize: vertical; /* 사용자가 세로 크기를 조정할 수 있도록 */
+        }
+        input[type="submit"] {
+            background-color: #555555;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #777777;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #ffffff;
+        }
+        .response {
+            background-color: #333333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat with GPT</h1>
+    <form action="/chat/" method="post">
+        <label for="system_message">System Message:</label><br>
+        <!-- 사용자가 입력한 system 메시지를 입력 폼에 채워 넣음 -->
+        <textarea id="system_message" name="system_message" required>{{ system_message }}</textarea><br><br>
+        <label for="user">User Message:</label><br>
+        <textarea id="user" name="user" required></textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if response_message %}
+    <h2>Response:</h2>
+    <!-- 응답 메시지를 HTML로 렌더링 -->
+    <div class="response">{{ response_message | safe }}</div>
+    {% endif %}
+    <!-- Prism.js JS 추가 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-python.min.js"></script>
+</body>
+</html>
