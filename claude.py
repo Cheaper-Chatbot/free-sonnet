@@ -9,9 +9,9 @@ message = client.messages.create(
   messages=[
     {
       "role": "user",
-      "content": "Send me a recipe for banana bread.",
+      "content": "아아아아아아아.ㅋㅋㅋㅋ",
     }
   ],
   model="claude-3-5-sonnet@20240620",
 )
-print(message.model_dump_json(indent=2)['content'])
+print(message.model_dump_json(indent=2))
